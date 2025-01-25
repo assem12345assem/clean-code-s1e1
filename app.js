@@ -4,8 +4,10 @@
   Break things down into smaller steps and take each step at a time.
 */
 const NEW_TASK_INPUT_ID = "top-section__new-task";
-const BUTTON_TAG = "button";
+const BUTTON_ELEMENT = "button";
+const IMG_ELEMENT = "img";
 const INCOMPLETE_TASKS_ID = "to-do-section__tasks";
+const DELETE_BUTTON_IMG = "delete-button__img";
 const COMPLETED_TASKS_ID = "completed-tasks";
 const LI_TAG = "li";
 //class names:
@@ -22,7 +24,7 @@ const BUTTON_LABEL_EDIT = "Edit";
 const BUTTON_LABEL_SAVE = "Save";
 
 const taskInput = document.getElementById(NEW_TASK_INPUT_ID);
-const addButton = document.getElementsByTagName(BUTTON_TAG)[0];
+const addButton = document.getElementsByTagName(BUTTON_ELEMENT)[0];
 const incompleteTaskHolder = document.getElementById(INCOMPLETE_TASKS_ID);
 const completedTasksHolder = document.getElementById(COMPLETED_TASKS_ID);
 
@@ -50,17 +52,17 @@ const createButton = (className, innerText) => {
 };
 const createDeleteButton = () => {
   const deleteButton = createButton(CLASS_DELETE_BUTTON);
-  const deleteButtonImg = document.createElement("img");
+  const deleteButtonImg = document.createElement(IMG_ELEMENT);
   deleteButtonImg.src = "./remove.svg";
   deleteButtonImg.alt = "delete button";
-  deleteButtonImg.className = "delete-button__img";
+  deleteButtonImg.className = DELETE_BUTTON_IMG;
   deleteButton.appendChild(deleteButtonImg);
   return deleteButton;
 };
 const createNewTaskElement = (taskString) => {
   const listItem = document.createElement("li");
   listItem.className = "task-item";
-  const checkBox = createInput("checkbox", "checkbox");
+  const checkBox = createInput(CLASS_CHECKBOX, CLASS_CHECKBOX);
   const label = createLabel(CLASS_TASK_LABEL, taskString);
   const editInput = createInput("text", CLASS_TASK_INPUT);
   const editButton = createButton(CLASS_EDIT_BUTTON, "Edit");
@@ -146,10 +148,10 @@ function bindTaskEvents(taskListItem, checkBoxEventHandler) {
   checkBox.onchange = checkBoxEventHandler;
 }
 
-for (let i = 0; i < incompleteTaskHolder.children.length; i++) {
-  bindTaskEvents(incompleteTaskHolder.children[i], taskCompleted);
+for (const element of incompleteTaskHolder.children) {
+  bindTaskEvents(element, taskCompleted);
 }
 
-for (let i = 0; i < completedTasksHolder.children.length; i++) {
-  bindTaskEvents(completedTasksHolder.children[i], taskIncomplete);
+for (const element of completedTasksHolder.children) {
+  bindTaskEvents(element, taskIncomplete);
 }
