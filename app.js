@@ -3,19 +3,20 @@
   Solution: Add interactivity so the user can manage daily tasks.
   Break things down into smaller steps and take each step at a time.
 */
-const NEW_TASK_INPUT_ID = "new-task";
+const NEW_TASK_INPUT_ID = "top-section__new-task";
 const BUTTON_TAG = "button";
-const INCOMPLETE_TASKS_ID = "incomplete-tasks";
+const INCOMPLETE_TASKS_ID = "to-do-section__tasks";
 const COMPLETED_TASKS_ID = "completed-tasks";
 const LI_TAG = "li";
 //class names:
 const CLASS_TASK_INPUT = "task-input";
 const CLASS_TASK_LABEL = "task-label";
 
-const CLASS_EDIT_BUTTON = "edit";
-const CLASS_EDIT_MODE = "edit-mode";
+const CLASS_EDIT_BUTTON = "edit-button";
+const EDIT_MODE = "edit-mode";
+const COMPLETED_MODE = "completed-mode";
 const CLASS_CHECKBOX = "checkbox";
-const CLASS_DELETE_BUTTON = "delete";
+const CLASS_DELETE_BUTTON = "delete-button";
 //inner texts:
 const BUTTON_LABEL_EDIT = "Edit";
 const BUTTON_LABEL_SAVE = "Save";
@@ -48,17 +49,17 @@ const createButton = (className, innerText) => {
   return button;
 };
 const createDeleteButton = () => {
-  const deleteButton = createButton("delete");
+  const deleteButton = createButton(CLASS_DELETE_BUTTON);
   const deleteButtonImg = document.createElement("img");
   deleteButtonImg.src = "./remove.svg";
-  deleteButtonImg.alt = "delete";
-  deleteButtonImg.className = "delete__img";
+  deleteButtonImg.alt = "delete button";
+  deleteButtonImg.className = "delete-button__img";
   deleteButton.appendChild(deleteButtonImg);
   return deleteButton;
 };
 const createNewTaskElement = (taskString) => {
   const listItem = document.createElement("li");
-  listItem.className = "li";
+  listItem.className = "task-item";
   const checkBox = createInput("checkbox", "checkbox");
   const label = createLabel(CLASS_TASK_LABEL, taskString);
   const editInput = createInput("text", CLASS_TASK_INPUT);
@@ -97,13 +98,13 @@ function editTask() {
   let editInput = listItem.getElementsByClassName(CLASS_TASK_INPUT)[0];
   let label = listItem.getElementsByClassName(CLASS_TASK_LABEL)[0];
   let editBtn = listItem.getElementsByClassName(CLASS_EDIT_BUTTON)[0];
-  const containsClass = listItem.classList.contains(CLASS_EDIT_MODE);
+  const containsClass = listItem.classList.contains(EDIT_MODE);
   if (containsClass) {
     enterEditMode(editInput, label, editBtn);
   } else {
     exitEditMode(editInput, label, editBtn);
   }
-  listItem.classList.toggle(CLASS_EDIT_MODE);
+  listItem.classList.toggle(EDIT_MODE);
 }
 
 function deleteTask() {
@@ -115,7 +116,7 @@ function deleteTask() {
 function taskCompleted() {
   console.log("Complete Task...");
   const listItem = this.parentNode;
-  listItem.classList.add("task-label_completed");
+  listItem.classList.add(COMPLETED_MODE);
   completedTasksHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskIncomplete);
 }
@@ -123,11 +124,8 @@ function taskCompleted() {
 function taskIncomplete() {
   console.log("Incomplete Task...");
   const listItem = this.parentNode;
-  console.log(listItem);
-  if (listItem.classList.contains("task-label_completed")) {
-    console.log(listItem);
-
-    listItem.classList.remove("task-label_completed");
+  if (listItem.classList.contains(COMPLETED_MODE)) {
+    listItem.classList.remove(COMPLETED_MODE);
   }
   incompleteTaskHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskCompleted);
