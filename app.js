@@ -115,7 +115,7 @@ function deleteTask() {
 function taskCompleted() {
   console.log("Complete Task...");
   const listItem = this.parentNode;
-  listItem.classList.toggle("task-label_completed");
+  listItem.classList.add("task-label_completed");
   completedTasksHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskIncomplete);
 }
@@ -123,7 +123,12 @@ function taskCompleted() {
 function taskIncomplete() {
   console.log("Incomplete Task...");
   const listItem = this.parentNode;
-  listItem.classList.toggle("task-label_completed");
+  console.log(listItem);
+  if (listItem.classList.contains("task-label_completed")) {
+    console.log(listItem);
+
+    listItem.classList.remove("task-label_completed");
+  }
   incompleteTaskHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskCompleted);
 }
