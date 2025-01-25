@@ -47,7 +47,7 @@ body {
 .incomplete-tasks,
 .completed-tasks {
   margin: 0;
-  padding: 0px;
+  padding: 0;
 }
 
 li {
@@ -67,7 +67,7 @@ li {
 .edit,
 .add-button {
   background: none;
-  border: 0px;
+  border: 0;
   color: #888;
   font-size: 15px;
   width: 60px;
