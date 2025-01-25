@@ -21,9 +21,9 @@ const BUTTON_LABEL_EDIT = "Edit";
 const BUTTON_LABEL_SAVE = "Save";
 
 const taskInput = document.getElementById(NEW_TASK_INPUT_ID);
-var addButton = document.getElementsByTagName(BUTTON_TAG)[0];
-var incompleteTaskHolder = document.getElementById(INCOMPLETE_TASKS_ID);
-var completedTasksHolder = document.getElementById(COMPLETED_TASKS_ID);
+const addButton = document.getElementsByTagName(BUTTON_TAG)[0];
+const incompleteTaskHolder = document.getElementById(INCOMPLETE_TASKS_ID);
+const completedTasksHolder = document.getElementById(COMPLETED_TASKS_ID);
 
 const createLabel = (className, innerText) => {
   const label = document.createElement("label");
