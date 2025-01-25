@@ -25,39 +25,40 @@ var addButton = document.getElementsByTagName(BUTTON_TAG)[0];
 var incompleteTaskHolder = document.getElementById(INCOMPLETE_TASKS_ID);
 var completedTasksHolder = document.getElementById(COMPLETED_TASKS_ID);
 
-
 const createLabel = (className, innerText) => {
   const label = document.createElement("label");
   label.innerText = innerText;
   label.className = className;
   return label;
-}
+};
 const createInput = (type, className) => {
   const input = document.createElement("input");
   input.type = type;
-  if(className) {
+  if (className) {
     input.className = className;
   }
   return input;
-}
+};
 const createButton = (className, innerText) => {
   const button = document.createElement("button");
-  if(innerText) {
+  if (innerText) {
     button.innerText = innerText;
   }
   button.className = className;
   return button;
-}
+};
 const createDeleteButton = () => {
   const deleteButton = createButton("delete");
   const deleteButtonImg = document.createElement("img");
   deleteButtonImg.src = "./remove.svg";
   deleteButtonImg.alt = "delete";
+  deleteButtonImg.className = "delete__img";
   deleteButton.appendChild(deleteButtonImg);
   return deleteButton;
-}
+};
 const createNewTaskElement = (taskString) => {
   const listItem = document.createElement("li");
+  listItem.className = "li";
   const checkBox = createInput("checkbox", "checkbox");
   const label = createLabel(CLASS_TASK_LABEL, taskString);
   const editInput = createInput("text", CLASS_TASK_INPUT);
@@ -70,7 +71,7 @@ const createNewTaskElement = (taskString) => {
   listItem.appendChild(editButton);
   listItem.appendChild(deleteButton);
   return listItem;
-}
+};
 
 const addTask = () => {
   console.log("Add Task...");
@@ -79,16 +80,16 @@ const addTask = () => {
   incompleteTaskHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskCompleted);
   taskInput.value = "";
-}
+};
 
 const enterEditMode = (input, label, button) => {
   label.innerText = input.value;
   button.innerText = BUTTON_LABEL_EDIT;
-}
+};
 const exitEditMode = (input, label, button) => {
   input.value = label.innerText;
   button.innerText = BUTTON_LABEL_SAVE;
-}
+};
 function editTask() {
   console.log("Edit Task...");
   console.log("Change 'edit' to 'save'");
@@ -103,8 +104,7 @@ function editTask() {
     exitEditMode(editInput, label, editBtn);
   }
   listItem.classList.toggle(CLASS_EDIT_MODE);
-};
-
+}
 
 function deleteTask() {
   console.log("Delete Task...");
@@ -112,18 +112,18 @@ function deleteTask() {
   listItem.remove();
 }
 
-
 function taskCompleted() {
   console.log("Complete Task...");
   const listItem = this.parentNode;
+  listItem.classList.toggle("task-label_completed");
   completedTasksHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskIncomplete);
 }
 
-
 function taskIncomplete() {
   console.log("Incomplete Task...");
   const listItem = this.parentNode;
+  listItem.classList.toggle("task-label_completed");
   incompleteTaskHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskCompleted);
 }
@@ -131,12 +131,12 @@ function taskIncomplete() {
 addButton.onclick = addTask;
 addButton.addEventListener("click", addTask);
 
-
-function bindTaskEvents (taskListItem, checkBoxEventHandler) {
+function bindTaskEvents(taskListItem, checkBoxEventHandler) {
   console.log("bind list item events");
   let checkBox = taskListItem.getElementsByClassName(CLASS_CHECKBOX)[0];
   let editButton = taskListItem.getElementsByClassName(CLASS_EDIT_BUTTON)[0];
-  let deleteButton = taskListItem.getElementsByClassName(CLASS_DELETE_BUTTON)[0];
+  let deleteButton =
+    taskListItem.getElementsByClassName(CLASS_DELETE_BUTTON)[0];
 
   editButton.onclick = editTask;
   deleteButton.onclick = deleteTask;
@@ -146,7 +146,6 @@ function bindTaskEvents (taskListItem, checkBoxEventHandler) {
 for (let i = 0; i < incompleteTaskHolder.children.length; i++) {
   bindTaskEvents(incompleteTaskHolder.children[i], taskCompleted);
 }
-
 
 for (let i = 0; i < completedTasksHolder.children.length; i++) {
   bindTaskEvents(completedTasksHolder.children[i], taskIncomplete);

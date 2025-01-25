@@ -12,7 +12,7 @@
 </head>
 <body>
   <div class="header">
-    <img src="./eisenhower-matrix.jpg">
+    <img class="header__img" src="./eisenhower-matrix.jpg">
     <a class="more-inf"
        href="https://goal-life.com/page/method/matrix-eisenhower">
       Want more details?
@@ -20,17 +20,17 @@
   </div>
   <div class="main">
     <p id="top-section">
-      <label for="new-task">
+      <label for="new-task" class="h3 add-item__label">
         Add Item
       </label>
       <div class="task-row">
-        <input id="new-task" class="task-input" type="text">
-        <button>Add</button>
+        <input id="new-task" class="top-section__task-input" type="text">
+        <button class="add-button">Add</button>
       </div>
     </p>
-    <h3>Todo</h3>
+    <h3 class="h3">Todo</h3>
     <ul id="incomplete-tasks">
-      <li>
+      <li class="li">
         <input type="checkbox" class="checkbox">
         <label class="task-label">
           Pay Bills
@@ -40,10 +40,10 @@
           Edit
         </button>
         <button class="delete">
-          <img src="./remove.svg">
+          <img class="delete__img" src="./remove.svg">
         </button>
       </li>
-      <li class="edit-mode">
+      <li class="edit-mode li">
         <input type="checkbox" class="checkbox">
         <label class="task-label">
           Go Shopping
@@ -53,15 +53,15 @@
           Save
         </button>
         <button class="delete">
-          <img src="./remove.svg">
+          <img class="delete__img" src="./remove.svg">
         </button>
       </li>
     </ul>
-    <h3>Completed</h3>
+    <h3 class="h3">Completed</h3>
     <ul id="completed-tasks">
-      <li>
+      <li class="li">
         <input type="checkbox" class="checkbox" checked>
-        <label class="task-label">
+        <label class="task-label task-label_completed">
           See the Doctor
         </label>
         <input type="text" class="task-input">
@@ -69,7 +69,7 @@
           Edit
         </button>
         <button class="delete">
-          <img src="./remove.svg">
+          <img class="delete__img" src="./remove.svg">
         </button>
       </li>
     </ul>
