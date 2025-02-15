@@ -31,7 +31,7 @@
 .task-input {
   width: 56%;
   display: inline-block;
-  flex-grow: 1
+  flex-grow: 1;
 }
 .task-row {
   display: flex;
@@ -126,7 +126,7 @@ label[for="new-task"] {
   width: 226px;
 }
 .task-input {
-  width: 226px
+  width: 226px;
 }
 .delete-button__img {
   height: 2em;
@@ -150,7 +150,7 @@ ul li .task-input {
 
 ul li.edit-mode .task-input {
   display: inline-block;
-  width: 224px
+  width: 224px;
 }
 
 ul li.edit-mode .task-label {

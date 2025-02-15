@@ -55,9 +55,7 @@ var createNewTaskElement = function (taskString) {
   listItem.appendChild(editButton);
   listItem.appendChild(deleteButton);
   return listItem;
-}
-
-
+};
 
 var addTask = function () {
   console.log("Add Task...");
