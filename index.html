@@ -10,23 +10,23 @@
   </head>
   <body class="body">
     <header class="header">
-      <img src="./eisenhower-matrix.jpg" alt="Eisenhower Matrix" />
+      <img src="./eisenhower-matrix.jpg" alt="Eisenhower Matrix" class="header__img" />
       <a
-        class="more_inf"
+        class="header__more_inf"
         href="https://goal-life.com/page/method/matrix-eisenhower"
         >Want more details?
       </a>
     </header>
     <main class="main">
       <div id="top-section">
-        <label for="new-task">Add Item</label>
-        <div class="task-row">
+        <label for="new-task" class="top-section__h3">Add Item</label>
+        <div class="top-section__task-row">
           <input id="new-task" class="task-input" type="text" /><button class="add-button">Add</button>
         </div>
       </div>
       <section id="incomplete-section">
-        <h3 class="h3">Todo</h3>
-        <ul id="incomplete-tasks">
+        <h3 class="incomplete-section__h3">Todo</h3>
+        <ul id="incomplete-section__tasks">
           <li class="list-item">
             <input type="checkbox" class="checkbox-input"/><label class="task-label">Pay Bills</label>
             <input type="text" class="task-input" />
@@ -42,8 +42,8 @@
         </ul>
       </section>
       <section id="completed-section">
-        <h3 class="h3">Completed</h3>
-        <ul id="completed-tasks">
+        <h3 class="completed-section__h3">Completed</h3>
+        <ul id="completed-section__tasks">
           <li class="list-item">
             <input type="checkbox" checked class="checkbox-input"/><label class="task-label">See the Doctor</label>
             <input type="text" class="task-input" />
