@@ -17,12 +17,12 @@
   font-family: fantasy, cursive;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .header {
     text-align: center;
   }
 }
-.main{
+.main {
   display: block;
   width: 500px;
   margin: 0 auto 0;
@@ -42,13 +42,13 @@ ul {
 }
 .list-item,
 .h3 {
-  list-style:none;
+  list-style: none;
 }
 input,
 .add-button,
 .delete-button,
-.edit-button{
-  outline:none;
+.edit-button {
+  outline: none;
 }
 .add-button,
 .delete-button,
@@ -119,7 +119,7 @@ label[for="new-task"] {
 .checkbox-input {
   margin: 0 10px;
 }
-.task-label{
+.task-label {
   padding-left: 10px;
   box-sizing: border-box;
   font-size: 18px;
@@ -145,14 +145,14 @@ label[for="new-task"] {
 
 /* Edit Task */
 ul li .task-input {
-  display:none
+  display: none;
 }
 
 ul li.edit-mode .task-input {
-  display:inline-block;
-  width:224px
+  display: inline-block;
+  width: 224px
 }
 
 ul li.edit-mode .task-label {
-  display:none;
+  display: none;
 }
